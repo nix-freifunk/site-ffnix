@@ -37,11 +37,11 @@ fi
 # Release Branch regex
 RELEASE_BRANCH_RE="^v20[0-9]{2}\.[0-9]\.x$"
 # Regex for nightly firmware tag
-NIGHTLY_TAG_RE="^v[2-9].[0-9].x-[0-9]{8}$"
+NIGHTLY_TAG_RE="^v[0-9].[0-9].x-[0-9]{8}$"
 # Regex for custom nightly firmware tag
-CUSTOM_NIGHTLY_TAG_RE="^v[2-9].[0-9].x-[0-9]{8}"
+CUSTOM_NIGHTLY_TAG_RE="^v[0-9].[0-9].x-[0-9]{8}"
 # Regex for release firmware tag
-RELEASE_TAG_RE="^v[2-9].[0-9].[0-9]$"
+RELEASE_TAG_RE="^v[0-9].[0-9].[0-9]$"
 
 # Get Gluon version information
 if [ -n "$WORKFLOW_DISPATCH_REPOSITORY" ] && [ -n "$WORKFLOW_DISPATCH_REFERENCE" ]; then
