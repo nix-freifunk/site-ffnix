@@ -26,9 +26,9 @@ SCRIPT_DIR="$(dirname "$0")"
 RELEASE_NAME="${1-}"
 
 # Regex for nightly firmware tag
-NIGHTLY_TAG_RE="^[2-9].[0-9].x-[0-9]{8}$"
+NIGHTLY_TAG_RE="^[0-9].[0-9].x-[0-9]{8}$"
 # Regex for release firmware tag
-RELEASE_TAG_RE="^[2-9].[0-9].[0-9]$"
+RELEASE_TAG_RE="^[0-9].[0-9].[0-9]$"
 
 # Check if we have an argument provided.
 if [ -n "$RELEASE_NAME" ]; then
