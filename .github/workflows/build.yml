@@ -253,6 +253,14 @@ jobs:
           gluon-path: "gluon-gha-data/gluon"
           hardware-target: ${{ matrix.target }}
 
+  # Workarround so that there is a single job for the status check
+  build-complete:
+    name: All Targets Build
+    runs-on: ubuntu-22.04
+    needs: [build, build-meta, targets]
+    steps:
+      - run: |
+          echo "All builds succeded"
 
   manifest:
     needs: [build, build-meta, targets]
