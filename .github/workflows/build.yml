@@ -261,16 +261,15 @@ jobs:
     name: All Targets Build
     runs-on: ubuntu-22.04
     needs: [build, build-meta, targets]
-    if: ${{ always() }}
+    if: ${{ !cancelled() }}
     steps:
-      - name: Error out if there is a failure
-        if: ${{ needs.build_firmware.result != 'success' }}
+      - name: Error out because there is a failure
+        if: ${{ failure() }}
         run: |
           echo "One or more builds failed."
           exit 1
-      - name: Proceed if all passed
-        if: ${{ needs.build_firmware.result == 'success' }}
-        run: echo "All required builds succeded!"
+      - name: Error out because there is a failure
+        run: echo "All firmware builds succeded!"
 
   manifest:
     needs: [build, build-meta, targets]
