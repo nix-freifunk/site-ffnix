@@ -211,6 +211,9 @@ jobs:
       - name: Print meminfo
         run: cat /proc/meminfo
 
+      - name: Remove non-required software
+        run: bash .github/free-runner-space.sh
+
       - name: Download prepared OpenWrt
         uses: actions/download-artifact@v4
         with:
@@ -258,16 +261,15 @@ jobs:
     name: All Targets Build
     runs-on: ubuntu-22.04
     needs: [build, build-meta, targets]
-    if: ${{ always() }}
+    if: ${{ !cancelled() }}
     steps:
       - name: Error out if there is a failure
-        if: ${{ needs.build_firmware.result != 'success' }}
+        if: ${{ needs.build.result != 'success' }}
         run: |
-          echo "One or more builds failed."
+          echo "Build Matrix Result: ${{ needs.build.result }}"
           exit 1
-      - name: Proceed if all passed
-        if: ${{ needs.build_firmware.result == 'success' }}
-        run: echo "All required builds succeded!"
+      - name: All firmware builds succeded
+        run: echo "All firmware builds succeded!"
 
   manifest:
     needs: [build, build-meta, targets]
