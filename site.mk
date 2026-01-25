@@ -7,7 +7,7 @@
 #			opkg compare-versions "$1" '>>' "$2"
 #		to decide if a version is newer or not.
 
-FFNIX_SITE_VERSION := 0.2
+FFNIX_SITE_VERSION := 0.3
 
 DEFAULT_GLUON_RELEASE := $(FFNIX_SITE_VERSION).x-$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
